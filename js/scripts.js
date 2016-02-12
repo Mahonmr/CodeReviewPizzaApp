@@ -62,25 +62,25 @@ Order.prototype.totalOrder = function() {
 
 
 
-// $(document).ready(function() {
-//   $("form#new-game").submit(function(event) {
-//     event.preventDefault();
-//     new_game = new Game();
-//     console.log(new_game)
-//   });
-//
-//   $('.row').on("click", ".squares", function() {
-//     space = (new_game.board.nBoard[parseInt(this.id)]);
-//     turn = new_game.changeTurn();
-//     player = new_game.players[turn];
-//     player.markSpace(space);
-//     $(this).text(player.mark).removeClass("squares");
-//
-//     if (new_game.board.threeInARow(player)) {
-//       if(confirm(player.mark + ' is the winner!')) {
-//         location.reload();
-//         console.log(new_game.board.nBoard)
-//       }
-//     }
-//   });
-// });
+$(document).ready(function() {
+  $("form#order").submit(function(event) {
+    event.preventDefault();
+    newOrder = new Order();
+    console.log(newOrder)
+  });
+
+  // $('.row').on("click", ".squares", function() {
+  //   space = (new_game.board.nBoard[parseInt(this.id)]);
+  //   turn = new_game.changeTurn();
+  //   player = new_game.players[turn];
+  //   player.markSpace(space);
+  //   $(this).text(player.mark).removeClass("squares");
+  //
+  //   if (new_game.board.threeInARow(player)) {
+  //     if(confirm(player.mark + ' is the winner!')) {
+  //       location.reload();
+  //       console.log(new_game.board.nBoard)
+  //     }
+  //   }
+  });
+});
