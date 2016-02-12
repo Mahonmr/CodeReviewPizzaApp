@@ -2,7 +2,12 @@ function Topping(topping) {
   this.topping = topping;
 }
 
-function pizza(size) {
+function Pizza(size) {
   this.size = size;
-  this.toppings;
+  this.toppings = [];
+}
+
+function Order() {
+  this.total;
+  this.order = [];
 }
