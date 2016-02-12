@@ -60,27 +60,35 @@ Order.prototype.totalOrder = function() {
   return this.total = orderTotal;
 }
 
-
-
 $(document).ready(function() {
-  $("form#order").submit(function(event) {
-    event.preventDefault();
-    newOrder = new Order();
-    console.log(newOrder)
+  $("#add-topping").click(function() {
+    $("#new-toppings").append('<div class="new-topping">' +
+    '<div class="form-group">' +
+    '<label>Topping</label>' +
+    '<select class="form-control">' +
+    '<option value="" selected disabled>Please select</option>' +
+    '<option class="form-control topping" value="Pepperoni">Pepperoni</option>' +
+    '<option class="form-control topping" value="Sausage">Sausage</option>' +
+    '<option class="form-control topping" value="Extra Cheese">Extra Cheese</option>' +
+    '<option class="form-control topping" value="Olives">Olives</option>' +
+    '<option class="form-control topping" value="Pineapple">Pineapple</option>' +
+    '<option class="form-control topping" value="Canadain Bacon">Canadian Bacon</option>' +
+    '</select>' +
+    '</div>' +
+    '</div>');
   });
 
-  // $('.row').on("click", ".squares", function() {
-  //   space = (new_game.board.nBoard[parseInt(this.id)]);
-  //   turn = new_game.changeTurn();
-  //   player = new_game.players[turn];
-  //   player.markSpace(space);
-  //   $(this).text(player.mark).removeClass("squares");
-  //
-  //   if (new_game.board.threeInARow(player)) {
-  //     if(confirm(player.mark + ' is the winner!')) {
-  //       location.reload();
-  //       console.log(new_game.board.nBoard)
-  //     }
-  //   }
+
+  $("form#new_order").submit(function(event) {
+    event.preventDefault();
+    order = new Order();
+    pizza = new Pizza($(".new-pizza").find("option:selected").val());
+    console.log(pizza);
+
+    $(".new-topping").each(function() {
+      var topping = $(this).find("option:selected").val();
+      pizza.addTopping(new Topping(topping))
+    });
+    pizza.pizzPrice();
   });
 });
