@@ -96,14 +96,39 @@ describe('Pizza', function() {
     var testTopping4 = new Topping("pineapple");
     testPizza.addTopping(testTopping4);
     expect(testPizza.pizzPrice()).to.eql(22.00);
-    console.log(testPizza)
   });
 });
 
 describe('Order', function() {
-  it("Creates an Order", function() {
+  it("Creates an order", function() {
     var testOrder = new Order();
     expect(testOrder.total).to.equal();
     expect(testOrder.order).to.eql([]);
+  });
+
+  it("adds a pizza to the order", function() {
+    var testPizza = new Pizza("WagonWheel");
+    var testTopping = new Topping("pepperoni");
+    testPizza.addTopping(testTopping);
+    testPizza.pizzPrice();
+    var testOrder = new Order;
+    testOrder.addPizza(testPizza);
+    expect(testOrder.order[0].size).to.eql("WagonWheel");
+  });
+
+  it("create order total", function() {
+    var testPizza = new Pizza("WagonWheel");
+    var testTopping = new Topping("pepperoni");
+    testPizza.addTopping(testTopping);
+    testPizza.pizzPrice();
+    var testPizza2 = new Pizza("Large");
+    testPizza2.addTopping(testTopping);
+    testPizza2.pizzPrice();
+    var testOrder = new Order;
+    testOrder.addPizza(testPizza);
+    testOrder.addPizza(testPizza2);
+    testOrder.totalOrder();
+    console.log("testing order");
+    console.log(testOrder);
   });
 });

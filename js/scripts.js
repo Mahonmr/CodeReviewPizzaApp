@@ -35,7 +35,7 @@ Pizza.prototype.toppingsPrice = function() {
   if (size === "Small" || size === "Medium") {
     toppingCost = 0.75;
   } else if (size === "Large") {
-    toppingCost = 1;
+    toppingCost = 1.00;
   } else if (size === "WagonWheel") {
     toppingCost = 1.25;
   }
@@ -46,3 +46,41 @@ function Order() {
   this.total;
   this.order = [];
 }
+
+Order.prototype.addPizza = function(pizza) {
+  return this.order.push(pizza);
+}
+
+Order.prototype.totalOrder = function() {
+  var orderTotal = 0;
+
+  for (var i = 0; i < this.order.length; i += 1) {
+    orderTotal += this.order[i].price;
+  }
+  return this.total = orderTotal;
+}
+
+
+
+// $(document).ready(function() {
+//   $("form#new-game").submit(function(event) {
+//     event.preventDefault();
+//     new_game = new Game();
+//     console.log(new_game)
+//   });
+//
+//   $('.row').on("click", ".squares", function() {
+//     space = (new_game.board.nBoard[parseInt(this.id)]);
+//     turn = new_game.changeTurn();
+//     player = new_game.players[turn];
+//     player.markSpace(space);
+//     $(this).text(player.mark).removeClass("squares");
+//
+//     if (new_game.board.threeInARow(player)) {
+//       if(confirm(player.mark + ' is the winner!')) {
+//         location.reload();
+//         console.log(new_game.board.nBoard)
+//       }
+//     }
+//   });
+// });
