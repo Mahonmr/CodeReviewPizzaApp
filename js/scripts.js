@@ -63,32 +63,32 @@ Order.prototype.totalOrder = function() {
 $(document).ready(function() {
   $("#add-topping").click(function() {
     $("#new-toppings").append('<div class="new-topping">' +
-    '<div class="form-group">' +
-    '<label>Topping</label>' +
-    '<select class="form-control">' +
-    '<option value="" selected disabled>Please select</option>' +
-    '<option class="form-control topping" value="Pepperoni">Pepperoni</option>' +
-    '<option class="form-control topping" value="Sausage">Sausage</option>' +
-    '<option class="form-control topping" value="Extra Cheese">Extra Cheese</option>' +
-    '<option class="form-control topping" value="Olives">Olives</option>' +
-    '<option class="form-control topping" value="Pineapple">Pineapple</option>' +
-    '<option class="form-control topping" value="Canadain Bacon">Canadian Bacon</option>' +
-    '</select>' +
-    '</div>' +
-    '</div>');
+                                '<div class="form-group">' +
+                                  '<label>Topping</label>' +
+                                  '<select class="form-control">' +
+                                    '<option value="" selected disabled>Please select</option>' +
+                                    '<option class="form-control topping" value="Pepperoni">Pepperoni</option>' +
+                                    '<option class="form-control topping" value="Sausage">Sausage</option>' +
+                                    '<option class="form-control topping" value="Extra Cheese">Extra Cheese</option>' +
+                                    '<option class="form-control topping" value="Olives">Olives</option>' +
+                                    '<option class="form-control topping" value="Pineapple">Pineapple</option>' +
+                                    '<option class="form-control topping" value="Canadain Bacon">Canadian Bacon</option>' +
+                                  '</select>' +
+                                '</div>' +
+                              '</div>');
   });
-
 
   $("form#new_order").submit(function(event) {
     event.preventDefault();
     order = new Order();
     pizza = new Pizza($(".new-pizza").find("option:selected").val());
-    console.log(pizza);
 
     $(".new-topping").each(function() {
       var topping = $(this).find("option:selected").val();
       pizza.addTopping(new Topping(topping))
     });
     pizza.pizzPrice();
+    order.addPizza(pizza);
+    order.totalOrder();
   });
 });
