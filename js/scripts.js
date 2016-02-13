@@ -90,5 +90,17 @@ $(document).ready(function() {
     pizza.pizzPrice();
     order.addPizza(pizza);
     order.totalOrder();
+    console.log(order)
+    $("ul#pizza_order").append("<h2> Your Order </h2>");
+      order.order.forEach(function(pizza) {
+        $("ul#pizza_order").append("<li>" + pizza.size + " " + "Pizza </li>");
+        $("ul#pizza_order").append("<h3> Your Toppings </h3>");
+        pizza.toppings.forEach(function(topping) {
+        $("ul#pizza_order").append("<li>" + topping.topping + "</li>");
+        //$("ul#pizza_order").append("<li>" + order.order[0].toppings[0].topping + "</li>");
+        });
+        $("ul#pizza_order").append("<h3> Your Price </h3>");
+        $("ul#pizza_order").append("<li>" + order.total + "</li>");
+    });
   });
 });
