@@ -90,7 +90,6 @@ $(document).ready(function() {
     pizza.pizzPrice();
     order.addPizza(pizza);
     order.totalOrder();
-    console.log(order)
     $("ul#pizza_order").append("<h2> Your Order </h2>");
       order.order.forEach(function(pizza) {
         $("ul#pizza_order").append("<li>" + pizza.size + " " + "Pizza </li>");

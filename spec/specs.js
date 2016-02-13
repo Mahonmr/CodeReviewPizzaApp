@@ -128,7 +128,5 @@ describe('Order', function() {
     testOrder.addPizza(testPizza);
     testOrder.addPizza(testPizza2);
     testOrder.totalOrder();
-    console.log("testing order");
-    console.log(testOrder);
   });
 });
