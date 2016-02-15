@@ -85,20 +85,28 @@ $(document).ready(function() {
 
     $(".new-topping").each(function() {
       var topping = $(this).find("option:selected").val();
-      pizza.addTopping(new Topping(topping))
+      if (topping) {
+        pizza.addTopping(new Topping(topping));
+      }
     });
+
     pizza.pizzPrice();
     order.addPizza(pizza);
     order.totalOrder();
+
     $("ul#pizza_order").append("<h2> Your Order </h2>");
       order.order.forEach(function(pizza) {
         $("ul#pizza_order").append("<li>" + pizza.size + " " + "Pizza </li>");
-        $("ul#pizza_order").append("<h3> Your Toppings </h3>");
-        pizza.toppings.forEach(function(topping) {
-          $("ul#pizza_order").append("<li>" + topping.topping + "</li>");
-        });
+        if (pizza.toppings.length > 0) {
+          $("ul#pizza_order").append("<h3> Your Toppings </h3>");
+          pizza.toppings.forEach(function(topping) {
+            $("ul#pizza_order").append("<li>" + topping.topping + "</li>");
+          });
+        } else {
+          $("ul#pizza_order").append("<h3> No Toppings! What's wrong with you! </h3>");
+        }
         $("ul#pizza_order").append("<h3> Your Price </h3>");
-        $("ul#pizza_order").append("<li>" + order.total + "</li>");
+        $("ul#pizza_order").append("<li> $" + order.total + "</li>");
     });
   });
 });
